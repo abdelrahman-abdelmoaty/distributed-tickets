@@ -1,0 +1,25 @@
+============================================================
+DISTRIBUTED TICKETS — END-TO-END TESTS
+============================================================
+[harness] name service up
+[harness] three peers up and ready
+
+== test: concurrent bookings on DIFFERENT seats ==
+  all three different-seat bookings succeeded
+  all replicas agree
+
+== test: concurrent bookings on SAME seat ==
+  successes: 1, failures: 2
+  exactly one winner; all replicas agree
+
+== test: late peer joins and gets state ==
+  late joiner has the same state as existing replicas
+  post-join booking propagates correctly
+
+== test: peer CRASH mid-system; surviving peers continue ==
+  killing peer 2 (port 6103)
+  surviving peers continued to accept bookings and agree
+
+[harness] tearing down
+
+=== ALL TESTS PASSED ===
